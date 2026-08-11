@@ -1,0 +1,42 @@
+Data Directory
+Overview
+
+This directory contains input data for the wafer yield prediction model.
+
+Synthetic Data Format
+111 wafer samples
+12 critical electrical test parameters (before PCA reduction)
+Output: Wafer yield values (0.0 - 1.0)
+Data Structure
+Sample | Param1 | Param2 | ... | Param12 | Yield
+-------|--------|--------|-----|---------|-------
+1      | value  | value  | ... | value   | 0.xxx
+2      | value  | value  | ... | value   | 0.xxx
+...
+111    | value  | value  | ... | value   | 0.xxx
+Real-World Data Integration
+
+To use real wafer defect data:
+
+Export data in CSV or XLSX format
+Ensure 12 parameter columns + yield column
+Place file in this directory
+Update MATLAB script to load: dataMatrix = readtable('your_data.csv')
+Defect Clustering Patterns
+
+The project simulates 5 clustering patterns:
+
+Bullseye: Circular pattern (center concentrated)
+Bottom: Clustered at bottom edge
+Crescent Moon: Semi-circular pattern
+Edge: Clustered around edges
+Random: Uniformly distributed
+Data Notes
+Current version uses synthetically generated wafer data
+Simulations include Poisson-distributed defects
+Variance-to-mean ratio (V/M) calculated for each pattern
+CIM (Cluster Index Metric) = 1.24 for this dataset
+Future Work
+Integration with real DRAM wafer data (Taiwan fab example)
+Scalability testing with 300+ wafer samples
+Temporal analysis (wafer production batches)
